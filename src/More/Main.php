@@ -79,6 +79,9 @@ class Main extends PluginBase implements Listener {
                     $sender->addTitle("§l§6Fly", "§c§lDisable");
                     $sender->setAllowFlight(false);
                 break;
+                case 2:
+                    $this->openMenu($sender);
+                break;
             }
         });
         $form->setTitle("§lFlyUI");
@@ -103,7 +106,7 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage("§aYou have been healed!");
                 break;
                 case 1:
-                    
+                    $this->openMenu($sender);
                 break;
             }
         });
