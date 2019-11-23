@@ -24,25 +24,21 @@ class Main extends PluginBase implements Listener {
         $this->getLogger()->info(TextFormat::RED . "Disabled!");
     }
     
-    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) ; bool{
-        
-        switch($cmd->getName()){
+    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
+        switch($cmd->getName()){                    
             case "moreui":
-                if($sender instanceof Player){
-                   $this->openMyForm($sender);
-                }
-            if ($sender->hasPermission("moreui.command")){
-                     $this->openMyForm($sender);
-                else{     
-                     $sender->sendMesseage(TextFormat::RED . "You do not have permission to use this command!");
+                if ($sender->hasPermission("moreui.command")){
+                     $this->Menu($sender);
+                }else{     
+                     $sender->sendMessage(TextFormat::RED . "You dont have permission!");
                      return true;
-                }
-            break;
-        }
-        
-        return true;
+                }     
+            break;         
+            
+         }  
+        return true;                         
     }
-    
+        
     
     public function openMyForm($player){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
