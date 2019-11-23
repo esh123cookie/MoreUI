@@ -37,19 +37,19 @@ class Main extends PluginBase implements Listener {
         return true;                         
     }
    
-    public function openMenu($sender){ 
+    public function openMenu($player){ 
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Player $sender, int $data = null){
+        $form = $api->createSimpleForm(function (Player $player, int $data = null){
             $result = $data;
             if($result === null){
                 return true;
             }             
             switch($result){
                 case 0:
-                    $this->openFlyUI($sender);
+                    $this->openFlyUI($player);
                 break;
                 case 1:
-                    $this->openHealthUI($sender);
+                    $this->openHealthUI($player);
                 break;
             }
         });
@@ -57,13 +57,13 @@ class Main extends PluginBase implements Listener {
         $form->setContent("Chose a Category");
         $form->addButton("FlyUI");
         $form->addButton("HealthUI");
-        $form->sendToPlayer($sender);
+        $form->sendToPlayer($player);
         return $form;                                            
     }
     
-    public function openFlyUI($sender){ 
+    public function openFlyUI($player){ 
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Player $sender, int $data = null) { 
+        $form = $api->createSimpleForm(function (Player $player, int $data = null) { 
             $result = $data;
             if($result === null){
                 return true;
@@ -80,7 +80,7 @@ class Main extends PluginBase implements Listener {
                     $sender->setAllowFlight(false);
                 break;
                 case 2:
-                    $this->openMenu($sender);
+                    $this->openMenu($player);
                 break;
             }
         });
@@ -88,13 +88,13 @@ class Main extends PluginBase implements Listener {
         $form->addButton("§lOn");
         $form->addButton("§lOff");
         $form->addButton("§lExit");
-        $form->sendToPlayer($sender);
+        $form->sendToPlayer($player);
         return $form;                                            
     }
     
-    public function openHealthUI($sender){ 
+    public function openHealthUI($player){ 
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function (Player $sender, int $data = null) { 
+        $form = $api->createSimpleForm(function (Player $player, int $data = null) { 
             $result = $data;
             if($result === null){
                 return true;
@@ -106,14 +106,14 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage("§aYou have been healed!");
                 break;
                 case 1:
-                    $this->openMenu($sender);
+                    $this->openMenu($player);
                 break;
             }
         });
         $form->setTitle("§lHealUI");
         $form->addButton("§lHeal");
         $form->addButton("§lExit");
-        $form->sendToPlayer($sender);
+        $form->sendToPlayer($player);
         return $form;                                            
     }
                                                                                                                                                                                                                                                                                           
