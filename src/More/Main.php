@@ -27,7 +27,7 @@ class Main extends PluginBase implements Listener {
         switch($cmd->getName()){                    
             case "moreui":
                 if ($player->hasPermission("moreui.command")){
-                     $this->openMenu($sender);
+                     $this->openMenu($player);
                 }else{     
                      $player->sendMesseage(TextFormat::RED . "You do not have permission to use this command!");
                      return true;
