@@ -12,7 +12,6 @@ use pocketmine\command\CommandExecutor;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\utils\TextFormat;
 use jojoe77777\FormAPI\SimpleForm;
-use jojoe77777\FormAPI\CustomForm;
 
 class Main extends PluginBase implements Listener {
 
