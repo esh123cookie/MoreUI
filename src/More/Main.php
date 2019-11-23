@@ -23,10 +23,10 @@ class Main extends PluginBase implements Listener {
         $this->getLogger()->info(TextFormat::RED . "Disabled!");
     }
 
-    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
+    public function onCommand(CommandSender $player, Command $cmd, string $label, array $args) : bool {
         switch($cmd->getName()){                    
             case "moreui":
-                if ($sender->hasPermission("moreui.command")){
+                if ($player->hasPermission("moreui.command")){
                      $this->openMenu($player);
                 }else{     
                      $player->sendMesseage(TextFormat::RED . "You do not have permission to use this command!");
