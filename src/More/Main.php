@@ -26,10 +26,10 @@ class Main extends PluginBase implements Listener {
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
         switch($cmd->getName()){                    
             case "moreui":
-                if ($sender->hasPermission("moreui.command")){
+                if ($player->hasPermission("moreui.command")){
                      $this->openMenu($sender);
                 }else{     
-                     $sender->sendMesseage(TextFormat::RED . "You do not have permission to use this command!");
+                     $player->sendMesseage(TextFormat::RED . "You do not have permission to use this command!");
                      return true;
                 }     
             break;         
@@ -70,14 +70,14 @@ class Main extends PluginBase implements Listener {
             }             
             switch($result){
                 case 0:
-                    $sender->sendMessage(TextFormat::GREEN . "Enabled flight mode!");
-                    $sender->addTitle("§l§6Fly", "§a§lEnable");
-                    $sender->setAllowFlight(true);
+                    $player->sendMessage(TextFormat::GREEN . "Enabled flight mode!");
+                    $player->addTitle("§l§6Fly", "§a§lEnable");
+                    $player->setAllowFlight(true);
                 break;
                 case 1:
-                    $sender->sendMessage(TextFormat::RED . "Disabled flight mode!");
-                    $sender->addTitle("§l§6Fly", "§c§lDisable");
-                    $sender->setAllowFlight(false);
+                    $player->sendMessage(TextFormat::RED . "Disabled flight mode!");
+                    $player->addTitle("§l§6Fly", "§c§lDisable");
+                    $player->setAllowFlight(false);
                 break;
                 case 2:
                     $this->openMenu($player);
@@ -101,9 +101,9 @@ class Main extends PluginBase implements Listener {
             }             
             switch($result){
                 case 0:
-                    $sender->setHealth(20);
-                    $sender->addTitle("Healed", "Your HP is Full");
-                    $sender->sendMessage("§aYou have been healed!");
+                    $player->setHealth(20);
+                    $player->addTitle("Healed", "Your HP is Full");
+                    $player->sendMessage("§aYou have been healed!");
                 break;
                 case 1:
                     $this->openMenu($player);
