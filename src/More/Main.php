@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener {
         switch($cmd->getName()){                    
             case "moreui":
                 if ($sender->hasPermission("moreui.command")){
-                     $this->Menu($sender);
+                     $this->openMenu($sender);
                 }else{     
                      $sender->sendMessage(TextFormat::RED . "You dont have permission!");
                      return true;
@@ -40,7 +40,7 @@ class Main extends PluginBase implements Listener {
     }
         
     
-    public function openMyForm($player){
+    public function openMenu($player){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $player, int $data = null){
             $result = data;
