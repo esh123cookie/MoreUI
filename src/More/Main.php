@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener {
             }
             switch($result){
                 case 0:
-                
+                    $this->openFlyUI($player);
                 break;
                 
                 case 1:
@@ -41,10 +41,36 @@ class Main extends PluginBase implements Listener {
                 break;
             }
         });
-        $form->setTitle("");
-        $form->setContent("");
-        $form->addButton("");
-        $form->addButton("");
+        $form->setTitle("MoreUI");
+        $form->setContent("Select a Category");
+        $form->addButton("Fly");
+        $form->addButton("Kit");
         $form->sendToPlayer($player);
         return $form;
+   }
+
+   public function openFlyUI($player){
+       $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+       $form = $api->createSimpleForm(function (Player $player, int $data = null){
+           $result = data;
+           if($result === null){
+               return true;
+           }
+           switch($result){
+               case 0:
+                
+               break;
+                
+               case 1:
+                
+               break;
+           }
+       });
+       $form->setTitle("FlyUI");
+       $form->setContent("Select a Category");
+       $form->addButton("On");
+       $form->addButton("Off");
+       $form->addButton("Exits");
+       $form->sendToPlayer($player);
+       return $form;
    }
