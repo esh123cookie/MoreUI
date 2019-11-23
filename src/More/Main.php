@@ -15,13 +15,13 @@ use pocketmine\utils\TextFormat;
 class Main extends PluginBase implements Listener {
 
     public function onEnable() {
-        $this->getLogger()->info(TextFormat::GREEN . "MoreUI Enable");
-        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);    
+        $this->getLogger()->info(TextFormat::GREEN . "Enabled!");
     }
     
     public function onDisable() {
-        $this->getLogger()->info(TextFormat::RED . "MoreUI Disable");
-        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->getServer()->getPluginManager()->registerEvents($this,$this);
+        $this->getLogger()->info(TextFormat::RED . "Disabled!");
     }
     
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) ; bool{
