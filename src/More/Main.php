@@ -57,7 +57,7 @@ class Main extends PluginBase implements Listener {
         $form->setTitle("MoreUI");
         $form->setContent("Select a Category");
         $form->addButton("Fly");
-        $form->sendToPlayer($player);
+        $form->sendToPlayer($sender);
         return $form;
    }
 
@@ -87,7 +87,7 @@ class Main extends PluginBase implements Listener {
        $form->addButton("On");
        $form->addButton("Off");
        $form->addButton("Exits");
-       $form->sendToPlayer($player);
+       $form->sendToPlayer($sender);
        return $form;
    }
 }
