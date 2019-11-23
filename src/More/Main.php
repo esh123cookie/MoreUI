@@ -2,6 +2,8 @@
 
 namespace More;
 
+use pocketmine\plugin\Plugin;
+use pocketmine\utils\Config;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
