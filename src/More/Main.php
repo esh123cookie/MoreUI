@@ -1,7 +1,15 @@
 <?php
 
-namespace AdminTools;
+namespace More;
 
+use pocketmine\Server;
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\Player;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\ConsoleCommandSender;
 use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements Listener {
