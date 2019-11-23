@@ -7,15 +7,27 @@ use pocketmine\utils\TextFormat;
 class Main extends PluginBase implements Listener {
 
     public function onEnable() {
+        $this->getLogger()->info(TextFormat::GREEN . "MoreUI Enable");
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
+    
+    public function onDisable() {
+        $this->getLogger()->info(TextFormat::RED . "MoreUI Disable");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
     
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) ; bool{
         
         switch($cmd->getName()){
-            case "kit":
+            case "moreui":
                 if($sender instanceof Player){
                    $this->openMyForm($sender);
+                }
+            if ($sender->hasPermission("moreui.command")){
+                     $this->openMyForm($sender);
+                else{     
+                     $sender->sendMesseage(TextFormat::RED . "You do not have permission to use this command!");
+                     return true;
                 }
             break;
         }
@@ -33,18 +45,14 @@ class Main extends PluginBase implements Listener {
             }
             switch($result){
                 case 0:
-                    $this->openFlyUI($player);
+                    $this->openFlyUI($sender);
                 break;
                 
-                case 1:
-                
-                break;
             }
         });
         $form->setTitle("MoreUI");
         $form->setContent("Select a Category");
         $form->addButton("Fly");
-        $form->addButton("Kit");
         $form->sendToPlayer($player);
         return $form;
    }
@@ -58,11 +66,15 @@ class Main extends PluginBase implements Listener {
            }
            switch($result){
                case 0:
-                
+                   $sender->sendMessage(TextFormat::GREEN . "Enabled flight mode!");
+                   $sender->addTitle("§l§6Fly", "§a§lEnable");
+                   $sender->setAllowFlight(true);
                break;
-                
+                   
                case 1:
-                
+                   $sender->sendMessage(TextFormat::RED . "Disabled flight mode!");
+                   $sender->addTitle("§l§6Fly", "§c§lDisable");
+                   $sender->setAllowFlight(false);
                break;
            }
        });
