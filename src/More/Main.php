@@ -37,7 +37,7 @@ class Main extends PluginBase implements Listener {
         return true;                         
     }
    
-    public function openMenu($player){ 
+    public function openMenu($sender){ 
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $sender, int $data = null){
             $result = $data;
